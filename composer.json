@@ -6,9 +6,10 @@
     "type": "project",
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
         "laravel/lumen-framework": "^6.0",
         "league/fractal": "^0.18.0",
-        "ext-json": "*"
+        "nwidart/laravel-modules": "^8.2"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",
