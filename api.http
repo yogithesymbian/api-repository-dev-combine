@@ -1,0 +1,74 @@
+POST http://0.0.0.0:8000/users/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "alahmadrosid@gmail.com",
+  "name": "ahmadrosid",
+  "password": "secret"
+}
+
+###
+
+POST http://0.0.0.0:8000/users/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "alahmadrosid@gmail.com",
+  "password": "secret"
+}
+
+> {% client.global.set("token", response.body.access_token); %}
+
+###
+GET http://0.0.0.0:8000/users/me
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+GET http://0.0.0.0:8000/notes?include=users
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+GET http://0.0.0.0:8000/notes/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+GET http://0.0.0.0:8000/notes/1?include=users
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+DELETE http://0.0.0.0:8000/notes/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST http://0.0.0.0:8000/notes
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Hi welcome",
+  "text": "Where are you?",
+  "user_id": 1
+}
+
+###
+
+PATCH http://0.0.0.0:8000/notes/2
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Hi welcome here",
+  "text": "Where are you?",
+  "user_id": 1
+}
+
+###
